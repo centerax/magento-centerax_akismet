@@ -20,8 +20,31 @@ class Centerax_Akismet_Adminhtml_AkismetController extends Mage_Adminhtml_Contro
             $this->getLayout()->createBlock('akismet/adminhtml_akismet_grid')->toHtml()
         );
     }
-
-	public function deleteAction(){
+	
+	public function massDeleteAction() {
+		
+        $ids = $this->getRequest()->getParam('spam');
+        if (!is_array($ids)) {
+            $this->_getSession()->addError($this->__('Please select item(s)'));
+        }
+        else {
+            try {
+                foreach ($ids as $id) {
+                    $obj = Mage::getModel('akismet/akismet_akismet')->load($id);
+                    $obj->delete();
+                }
+                $this->_getSession()->addSuccess(
+                    $this->__('Total of %d record(s) were successfully deleted', count($ids))
+                );
+            } catch (Exception $e) {
+                $this->_getSession()->addError($e->getMessage());
+            }
+        }
+        $this->_redirect('*/*/index');
+		
+	}
+	
+	public function deleteAction() {
 		$id = $this->getRequest()->getParam('id');
 		if(!$id){
 			$this->_getSession()->addError($this->__('ID not provided'));

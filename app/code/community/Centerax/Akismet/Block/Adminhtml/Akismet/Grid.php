@@ -1,7 +1,6 @@
 <?php
 
-class Centerax_Akismet_Block_Adminhtml_Akismet_Grid extends Mage_Adminhtml_Block_Widget_Grid
-{
+class Centerax_Akismet_Block_Adminhtml_Akismet_Grid extends Mage_Adminhtml_Block_Widget_Grid {
 
     public function __construct()
     {
@@ -77,8 +76,22 @@ class Centerax_Akismet_Block_Adminhtml_Akismet_Grid extends Mage_Adminhtml_Block
     public function getRowUrl($row)
     {
         return $this->getUrl('*/*/view', array(
-            'id'=>$row->getId())
+            'id' => $row->getId())
         );
+    }
+
+    protected function _prepareMassaction(){
+		
+        $this->setMassactionIdField('id');
+        $this->getMassactionBlock()->setFormFieldName('spam');
+
+        $this->getMassactionBlock()->addItem('delete', array(
+             'label'=> $this->__('Delete'),
+             'url'  => $this->getUrl('*/*/massDelete'),
+             'confirm' => $this->__('Are you sure?')
+        ));
+
+        return $this;
     }
 
     public function getGridUrl()
@@ -88,11 +101,11 @@ class Centerax_Akismet_Block_Adminhtml_Akismet_Grid extends Mage_Adminhtml_Block
 
 	public function getTypeOptions()
 	{
-		return array('contact'=>'Contact Us Form', 'review'=>'Product Review');
+		return array('contact' => $this->__('Contact Us Form'), 'review' => $this->__('Product Review'));
 	}
 
 	public function getStatusesOptions()
 	{
-		return array(1=>'Unread', 2=>'Read');
+		return array(1 => $this->__('Unread'), 2 => $this->__('Read'));
 	}
 }
