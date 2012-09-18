@@ -4,7 +4,6 @@
         <Centerax_Akismet>
             <active>true</active>
             <codePool>community</codePool>
-            <version>1.0.0</version>
         </Centerax_Akismet>
     </modules>
 </config>
