@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <contacts>
+            <groups>
+                <akismet translate="label">
+                    <label>Akismet</label>
+					<comment><![CDATA[<div class="box">Support this extension by clicking on this button <a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=GD7N3F58XDX56&lc=UY&item_name=Support+Centerax+Development&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img src="https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif" border="0" valign="bottom" alt="PayPal - The safer, easier way to pay online!" /></a></div>]]>
+					</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>99</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <api_key translate="label">
+                            <label>API Key</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>You may get one for signing up for a WordPress.com  account. You do not need to activate a blog; simply acquiring the account will provide you with the API key.</comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </api_key>
+                    </fields>
+                </akismet>
+            </groups>
+        </contacts>
+    </sections>
+</config>
