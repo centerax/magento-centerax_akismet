@@ -63,7 +63,7 @@ class Centerax_Akismet_Model_Api extends Mage_Core_Model_Abstract
 			}
 		}else{
 			// Log exception for admin reference
-			Mage::logException('Invalid Akismet API Key');
+			Mage::logException(new Exception('Invalid Akismet API Key'));
 		}
 
 		return $isSpam;
@@ -101,7 +101,7 @@ class Centerax_Akismet_Model_Api extends Mage_Core_Model_Abstract
 			}
 		}else{
 			// Log exception for admin reference
-			Mage::logException('Invalid Akismet API Key');
+			Mage::logException(new Exception('Invalid Akismet API Key'));
 		}
 
 		return $isSpam;
