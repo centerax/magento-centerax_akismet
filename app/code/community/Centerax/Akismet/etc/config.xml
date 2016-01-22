@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <config>
    <modules>
       <Centerax_Akismet>
-         <version>1.0.1</version>
+         <version>1.0.2</version>
       </Centerax_Akismet>
    </modules>
    <global>
@@ -15,60 +16,72 @@
             <class>Centerax_Akismet_Helper</class>
         </akismet>
     </helpers>
-   	<rewrite>
-   		<contacts_index_post>
+    <rewrite>
+        <contacts_index_post>
            <from><![CDATA[#contacts/index/post(.*)#]]></from>
            <to>cxakismet/contacts_index/post$1</to>
-   		</contacts_index_post>
-   		<review_product_post>
+        </contacts_index_post>
+        <review_product_post>
            <from><![CDATA[#review/product/post(.*)#]]></from>
            <to>cxakismet/review_product/post$1</to>
-   		</review_product_post>
-   	</rewrite>
-   	<models>
-   		<akismet>
-   			<class>Centerax_Akismet_Model</class>
-   			<resourceModel>akismet_mysql4</resourceModel>
-   		</akismet>
-	         <akismet_mysql4>
-	            <class>Centerax_Akismet_Model_Mysql4</class>
-	            <entities>
-	                <akismet_akismet>
-	                	<table>centerax_akismet</table>
-	                </akismet_akismet>
-	            </entities>
-	         </akismet_mysql4>
-   	</models>
-		<resources>
-			<akismet_setup>
-				<setup>
-					<module>Centerax_Akismet</module>
-				</setup>
-				<connection>
-					<use>core_setup</use>
-				</connection>
-			</akismet_setup>
-			<akismet_write>
-				<connection>
-					<use>core_write</use>
-				</connection>
-			</akismet_write>
-			<akismet_read>
-				<connection>
-					<use>core_read</use>
-				</connection>
-			</akismet_read>
-		</resources>
+        </review_product_post>
+    </rewrite>
+    <models>
+        <akismet>
+            <class>Centerax_Akismet_Model</class>
+            <resourceModel>akismet_mysql4</resourceModel>
+        </akismet>
+             <akismet_mysql4>
+                <class>Centerax_Akismet_Model_Mysql4</class>
+                <entities>
+                    <akismet_akismet>
+                        <table>centerax_akismet</table>
+                    </akismet_akismet>
+                </entities>
+             </akismet_mysql4>
+    </models>
+        <resources>
+            <akismet_setup>
+                <setup>
+                    <module>Centerax_Akismet</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </akismet_setup>
+            <akismet_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </akismet_write>
+            <akismet_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </akismet_read>
+        </resources>
    </global>
+   <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Aoe_Scheduler before="Mage_Adminhtml">Aoe_Scheduler_Adminhtml</Aoe_Scheduler>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    
     <admin>
         <routers>
-            <akismet>
-                <use>admin</use>
+            <adminhtml>
                 <args>
-                    <module>Centerax_Akismet</module>
-                    <frontName>akismet</frontName>
+                    <modules>
+                        <Centerax_Akismet before="Mage_Adminhtml">Centerax_Akismet_Adminhtml</Centerax_Akismet>
+                    </modules>
                 </args>
-            </akismet>
+            </adminhtml>
         </routers>
     </admin>
     <frontend>
@@ -82,42 +95,4 @@
           </akismet>
       </routers>
     </frontend>
-    <adminhtml>
-        <acl>
-            <resources>
-                <admin>
-                    <children>
-                        <system>
-                            <children>
-                                <akismet translate="title" module="akismet">
-                                    <title>Akismet SPAM</title>
-                                    <sort_order>90</sort_order>
-                                </akismet>
-                            </children>
-                        </system>
-                    </children>
-                </admin>
-            </resources>
-        </acl>
-        <menu>
-            <system>
-                <children>
-                    <akismet translate="title" module="akismet">
-                        <title>Akismet Anti SPAM</title>
-                        <action>akismet/adminhtml_akismet</action>
-                        <sort_order>199</sort_order>
-                    </akismet>
-                </children>
-            </system>
-        </menu>
-        <translate>
-            <modules>
-                <Centerax_Akismet>
-                    <files>
-                        <default>Centerax_Akismet.csv</default>
-                    </files>
-                </Centerax_Akismet>
-            </modules>
-        </translate>
-    </adminhtml>
 </config>

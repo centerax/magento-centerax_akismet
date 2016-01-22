@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <akismet translate="title" module="akismet">
+                                <title>Akismet SPAM</title>
+                                <sort_order>90</sort_order>
+                            </akismet>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <system>
+            <children>
+                <akismet translate="title" module="akismet">
+                    <title>Akismet Anti SPAM</title>
+                    <action>adminhtml/akismet/index</action>
+                    <sort_order>199</sort_order>
+                </akismet>
+            </children>
+        </system>
+    </menu>
+    <translate>
+        <modules>
+            <Centerax_Akismet>
+                <files>
+                    <default>Centerax_Akismet.csv</default>
+                </files>
+            </Centerax_Akismet>
+        </modules>
+    </translate>
+</config>
