@@ -61,18 +61,6 @@
             </akismet_read>
         </resources>
    </global>
-   <admin>
-        <routers>
-            <adminhtml>
-                <args>
-                    <modules>
-                        <Aoe_Scheduler before="Mage_Adminhtml">Aoe_Scheduler_Adminhtml</Aoe_Scheduler>
-                    </modules>
-                </args>
-            </adminhtml>
-        </routers>
-    </admin>
-    
     <admin>
         <routers>
             <adminhtml>
